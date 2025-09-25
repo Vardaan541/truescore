@@ -148,3 +148,4 @@ class _AdaptiveSportsHubPageState extends State<AdaptiveSportsHubPage> {
     // For example, navigate to a registration form or dashboard
   }
 }
+

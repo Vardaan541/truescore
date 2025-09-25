@@ -625,3 +625,4 @@ class _OfficialSignupScreenState extends State<OfficialSignupScreen> {
     ).animate().slideY(begin: 0.3, end: 0, delay: 1400.ms);
   }
 }
+

@@ -3,7 +3,9 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../theme/app_theme.dart';
 import '../theme/accessibility_theme.dart';
-import '../widgets/accessibility_toggle.dart';
+import 'settings_screen.dart';
+import 'community_forum_screen.dart';
+import 'tests_screen.dart';
 
 class AthleteDashboard extends StatefulWidget {
   const AthleteDashboard({super.key});
@@ -654,7 +656,7 @@ class _AthleteDashboardState extends State<AthleteDashboard>
   }
 
   Widget _buildTestsTab() {
-    return const Center(child: Text('Tests Tab - Coming Soon'));
+    return const TestsScreen();
   }
 
   Widget _buildPortfolioTab() {
@@ -662,128 +664,11 @@ class _AthleteDashboardState extends State<AthleteDashboard>
   }
 
   Widget _buildCommunityTab() {
-    return const Center(child: Text('Community Tab - Coming Soon'));
+    return const CommunityForumScreen();
   }
 
   Widget _buildSettingsTab() {
-    return SingleChildScrollView(
-      padding: EdgeInsets.all(16.w),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          // Accessibility Toggle
-          const AccessibilityToggle(),
-          SizedBox(height: 24.h),
-          // Other Settings
-          _buildSettingsSection(),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSettingsSection() {
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: AppTheme.surfaceDark,
-        borderRadius: BorderRadius.circular(12.r),
-        border: AccessibilityTheme.isHighContrast
-            ? Border.all(
-                color: AccessibilityTheme.getAccessibleColor(
-                  AppTheme.textSecondary,
-                ),
-                width: 1,
-              )
-            : null,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Account Settings',
-            style: AccessibilityTheme.createAccessibleTextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: AppTheme.highContrastForeground,
-            ),
-          ),
-          SizedBox(height: 16.h),
-          _buildSettingItem(
-            icon: Icons.person,
-            title: 'Edit Profile',
-            subtitle: 'Update your personal information',
-            onTap: () {},
-          ),
-          _buildSettingItem(
-            icon: Icons.notifications,
-            title: 'Notifications',
-            subtitle: 'Manage your notification preferences',
-            onTap: () {},
-          ),
-          _buildSettingItem(
-            icon: Icons.privacy_tip,
-            title: 'Privacy',
-            subtitle: 'Control your privacy settings',
-            onTap: () {},
-          ),
-          _buildSettingItem(
-            icon: Icons.help,
-            title: 'Help & Support',
-            subtitle: 'Get help and contact support',
-            onTap: () {},
-          ),
-          _buildSettingItem(
-            icon: Icons.logout,
-            title: 'Sign Out',
-            subtitle: 'Sign out of your account',
-            onTap: () {},
-            isDestructive: true,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSettingItem({
-    required IconData icon,
-    required String title,
-    required String subtitle,
-    required VoidCallback onTap,
-    bool isDestructive = false,
-  }) {
-    return ListTile(
-      leading: Icon(
-        icon,
-        color: isDestructive
-            ? AppTheme.error
-            : AccessibilityTheme.getAccessibleColor(AppTheme.athletePrimary),
-        size: AccessibilityTheme.getAccessibleIconSize(20),
-      ),
-      title: Text(
-        title,
-        style: AccessibilityTheme.createAccessibleTextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          color: isDestructive
-              ? AppTheme.error
-              : AppTheme.highContrastForeground,
-        ),
-      ),
-      subtitle: Text(
-        subtitle,
-        style: AccessibilityTheme.createAccessibleTextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.normal,
-          color: AppTheme.textSecondary,
-        ),
-      ),
-      trailing: Icon(
-        Icons.arrow_forward_ios,
-        color: AppTheme.textSecondary,
-        size: AccessibilityTheme.getAccessibleIconSize(16),
-      ),
-      onTap: onTap,
-    );
+    return const SettingsScreen();
   }
 
   Widget _buildBottomNavigationBar() {
